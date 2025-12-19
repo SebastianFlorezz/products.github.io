@@ -1,0 +1,44 @@
+/* --- Reset / base --- */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
+body { line-height: 1.5; color: #333; }
+img { max-width: 100%; display: block; }
+
+/* --- Header --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.logo { font-size: 1.5rem; font-weight: 700; color: #2e7d32; }
+nav a { margin-left: 1rem; text-decoration: none; color: #2e7d32; font-weight: 600; }
+#cart-count { background: #2e7d32; color: #fff; border-radius: 50%; padding: 2px 6px; font-size: .8rem; margin-left: 4px; }
+
+/* --- Landing --- */
+.landing { background: url("https://images.unsplash.com/photo-1493957988430-a5f2e15f39a3?auto=format&fit=crop&w=1350&q=80") center/cover no-repeat; min-height: 100vh; }
+.hero { background: rgba(255,255,255,.7); padding: 3rem 2rem; max-width: 600px; margin: 10vh auto; border-radius: 8px; }
+.hero h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+.hero p { margin-bottom: 1.5rem; }
+.btn { display: inline-block; background: #2e7d32; color: #fff; padding: .75rem 1.5rem; border-radius: 4px; text-decoration: none; }
+
+/* --- Products --- */
+.products { padding: 2rem; max-width: 1100px; margin: auto; }
+.category { margin-bottom: 2rem; }
+.category h3 { margin-bottom: 1rem; color: #2e7d32; }
+.plant-card { display: inline-block; width: 220px; border: 1px solid #ddd; border-radius: 6px; padding: 1rem; margin: .5rem; text-align: center; }
+.plant-card img { height: 140px; object-fit: cover; border-radius: 4px; margin-bottom: .5rem; }
+.name { font-weight: 600; margin: .25rem 0; }
+.price { margin-bottom: .75rem; }
+.add-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+/* --- Cart --- */
+.cart-page { padding: 2rem; max-width: 900px; margin: auto; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+th, td { padding: .75rem; text-align: left; border-bottom: 1px solid #ddd; }
+.thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; vertical-align: middle; margin-right: .5rem; }
+.inc, .dec, .del { padding: 4px 8px; margin: 0 4px; }
+.totals { text-align: right; font-size: 1.2rem; margin-bottom: 1.5rem; }
+.cart-actions { display: flex; gap: 1rem; justify-content: flex-end; }
+#checkout-btn { background: #2e7d32; color: #fff; border: none; padding: .75rem 1.5rem; border-radius: 4px; cursor: pointer; }

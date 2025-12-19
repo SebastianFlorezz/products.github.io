@@ -1,0 +1,92 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shop – Leafy Luxe</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1 class="logo">Leafy Luxe</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">
+        Cart <span id="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="products">
+    <h2>Our Plants</h2>
+
+    <section class="category">
+      <h3>Low-Light Lovers</h3>
+      <div class="plant-card" data-id="snake" data-price="25">
+        <img src="https://images.unsplash.com/photo-1593482892290-f54927ae1bb6?auto=format&fit=crop&w=400&q=60" alt="Snake Plant">
+        <p class="name">Snake Plant</p>
+        <p class="price">$25</p>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+
+      <div class="plant-card" data-id="zz" data-price="30">
+        <img src="https://images.unsplash.com/photo-1614594975525-e45190aea842?auto=format&fit=crop&w=400&q=60" alt="ZZ Plant">
+        <p class="name">ZZ Plant</p>
+        <p class="price">$30</p>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    </section>
+
+    <section class="category">
+      <h3>Pet-Friendly</h3>
+      <div class="plant-card" data-id="calathea" data-price="35">
+        <img src="https://images.unsplash.com/photo-1604762433828-a0e059d80258?auto=format&fit=crop&w=400&q=60" alt="Calathea">
+        <p class="name">Calathea</p>
+        <p class="price">$35</p>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+
+      <div class="plant-card" data-id="parlor" data-price="20">
+        <img src="https://images.unsplash.com/photo-1584776299643-a48f5b39c7d5?auto=format&fit=crop&w=400&q=60" alt="Parlor Palm">
+        <p class="name">Parlor Palm</p>
+        <p class="price">$20</p>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    </section>
+
+    <section class="category">
+      <h3>Statement Makers</h3>
+      <div class="plant-card" data-id="monstera" data-price="60">
+        <img src="https://images.unsplash.com/photo-1614594975525-e45190aea842?auto=format&fit=crop&w=400&q=60" alt="Monstera Deliciosa">
+        <p class="name">Monstera Deliciosa</p>
+        <p class="price">$60</p>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+
+      <div class="plant-card" data-id="fiddle" data-price="75">
+        <img src="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=400&q=60" alt="Fiddle Leaf Fig">
+        <p class="name">Fiddle Leaf Fig</p>
+        <p class="price">$75</p>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="cart.js"></script>
+  <script>
+    // Product-page behaviour
+    document.querySelectorAll('.add-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const card = this.closest('.plant-card');
+        const id = card.dataset.id;
+        const name = card.querySelector('.name').textContent;
+        const price = Number(card.dataset.price);
+        const img = card.querySelector('img').src;
+
+        addToCart({id, name, price, img});
+        this.disabled = true;
+        this.textContent = 'Added';
+      });
+    });
+  </script>
+</body>
+</html>
