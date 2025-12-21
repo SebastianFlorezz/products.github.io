@@ -1,0 +1,48 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: tax-pipeline
+spec:
+  workspaces:                 # espacio compartido entre tasks
+    - name: shared-workspace
+  params:
+    - name: repo-url
+      type: string
+      default: "https://github.com/sebastianflorezz/products.github.io"
+    - name: image-full-name
+      type: string
+      default: "us.icr.io/crn-tax-space/tax-calculator:tekton"
+  tasks:
+    # 1. clonar el código
+    - name: fetch-source
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+      params:
+        - name: url
+          value: "$(params.repo-url)"
+
+    # 2. ejecutar los tests
+    - name: run-tests
+      taskRef:
+        name: npm-jasmine
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+      runAfter:
+        - fetch-source
+
+    # 3. construir y pushear la imagen
+    - name: build-push
+      taskRef:
+        name: buildah
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+      runAfter:
+        - run-tests
+      params:
+        - name: IMAGE
+          value: "$(params.image-full-name)"
